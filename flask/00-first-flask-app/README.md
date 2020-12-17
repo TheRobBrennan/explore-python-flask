@@ -1,22 +1,8 @@
-# Welcome
+If this is your first time running this application, please follow the steps outlined in "Initial setup" to create a virtual environment and install the required libraries.
 
-## Getting started
+If you have already defined a virtual environment, please skip ahead to "Start the application"
 
-To run this example from the command line:
-
-```sh
-# Run the Python interpreter in interactive mode
-$ python3 -i server.py
->>> roll_dice()
-'The dice rolled: 1'
->>> roll_dice()
-'The dice rolled: 3'
->>> roll_dice()
-'The dice rolled: 3'
->>> quit()
-```
-
-## Create a virtual environment
+# Initial setup
 
 ```sh
 # Create a virtual environment inside an env folder
@@ -24,23 +10,24 @@ $ python3 -m venv env
 
 # Activate our virtual environment
 $ source env/bin/activate
+(env) rob@rb 00-first-flask-app %
 
-# Now if we run Python, we'll see we're in the right environment
-(env) rob@rb 00-first-flask-app % python
-
-# Verify that we are using the Python version for our environment
-% which python
-
-# Install Flask using the package installer for Python (pip)
-% pip install flask
-
+# Install our libraries using the package installer for Python (pip)
+% pip install -r requirements.txt
 ```
 
-## Start our Flask application
+# Start the application
 
 ```sh
-# Define our environment variables
-% export FLASK_APP=server FLASK_ENV=development
+# Activate our virtual environment
+$ source env/bin/activate
+(env) rob@rb 00-first-flask-app %
+
+# Define your environment variables in your terminal
+% export FLASK_APP=server FLASK_ENV=development PORT=5001
+
+# Run the application
+% gunicorn --bind 0.0.0.0:$PORT server:app --log-level "debug"
 ```
 
-Your Flask application will be available at [http://127.0.0.1:5000](http://127.0.0.1:5000)
+Your Flask application will be available at [http://0.0.0.0:5001](http://0.0.0.0:5001)
