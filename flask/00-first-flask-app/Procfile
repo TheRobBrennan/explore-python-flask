@@ -1,1 +1,1 @@
-web: gunicorn flask/00-first-flask-app --bind 0.0.0.0:$PORT server:app --log-level "debug"
+web: cd flask/00-first-flask-app && gunicorn --bind 0.0.0.0:$PORT server:app --log-level "debug"
