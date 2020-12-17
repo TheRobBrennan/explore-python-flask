@@ -1,10 +1,8 @@
-# Welcome
-
 This project explores creating applications using [Python 3.8.6 or newer](https://www.python.org) to develop [Flask](https://flask.palletsprojects.com/en/1.1.x/) applications.
 
-## Getting started
+# Getting started
 
-### Install Python on macOS Catalina
+## Install Python on macOS Catalina
 
 First, let's verify that we are using Python 3.8.6 or higher:
 
