@@ -1,1 +1,3 @@
--r ./flask/00-first-flask-app/requirements.txt
+# Heroku needs to load a project root requirements.txt - even when using the Heroku Multi Procfile buildpack. Comment/uncomment as necessary. 
+-r ./flask/00-first-flask-app/requirements.txt  # Example 00
+-r ./flask/01-stock-app/requirements.txt        # Example 01
