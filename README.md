@@ -57,11 +57,6 @@ $ heroku config:set -a rb-flask-00 PROCFILE=flask/00-first-flask-app/Procfile
 $ heroku config:set -a rb-flask-01 PROCFILE=flask/01-stock-app/Procfile
 
 # We're not done...yet. Each example app contains its own requirements.txt.
-# Even with the buildpack installed (above), Heroku only installs the requirements.txt file at the project root. We don't want that.
-
-# Add the Heroku Buildpack: Python buildpack to each application
-$ heroku buildpacks:add -a rb-flask-00 heroku/python
-$ heroku buildpacks:add -a rb-flask-01 heroku/python
 
 # Deploy each application
 $ git push https://git.heroku.com/rb-flask-00.git HEAD:master
