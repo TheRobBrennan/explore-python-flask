@@ -58,6 +58,10 @@ $ heroku config:set -a rb-flask-01 PROCFILE=flask/01-stock-app/Procfile
 
 # We're not done...yet. Each example app contains its own requirements.txt.
 
+# Add Heroku Buildpack: Python - https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-python
+$ heroku buildpacks:add -a rb-flask-00 heroku/python
+$ heroku buildpacks:add -a rb-flask-01 heroku/python
+
 # Deploy each application
 $ git push https://git.heroku.com/rb-flask-00.git HEAD:master
 $ git push https://git.heroku.com/rb-flask-01.git HEAD:master
