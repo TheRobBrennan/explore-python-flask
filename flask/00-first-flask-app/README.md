@@ -39,7 +39,8 @@ $ source env/bin/activate
 ## Start our Flask application
 
 ```sh
-% FLASK_APP=server FLASK_ENV=development flask run
+# Define our environment variables
+% export FLASK_APP=server FLASK_ENV=development
 ```
 
 Your Flask application will be available at [http://127.0.0.1:5000](http://127.0.0.1:5000)
