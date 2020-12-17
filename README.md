@@ -44,9 +44,9 @@ Imagine the nightmare of having individual repositories for all of the example a
 We will use [Heroku Multi Procfile buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-multi-procfile) to solve this problem.
 
 ```sh
-# Create more than one app on Heroku
-$ heroku create -a rb-flask-00
-$ heroku create -a rb-flask-01
+# Create applications (-a <application-name>) and their git remotes (-r <remote-name>) on Heroku
+$ heroku create -a rb-flask-00 -r heroku-example-00
+$ heroku create -a rb-flask-01 -r heroku-example-01
 
 # Add the Heroku Multi Procfile buildpack to each application
 $ heroku buildpacks:add -a rb-flask-00 heroku-community/multi-procfile
@@ -56,17 +56,20 @@ $ heroku buildpacks:add -a rb-flask-01 heroku-community/multi-procfile
 $ heroku config:set -a rb-flask-00 PROCFILE=flask/00-first-flask-app/Procfile
 $ heroku config:set -a rb-flask-01 PROCFILE=flask/01-stock-app/Procfile
 
-# We're not done...yet. Each example app contains its own requirements.txt.
-
 # Add Heroku Buildpack: Python - https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-python
 $ heroku buildpacks:add -a rb-flask-00 heroku/python
 $ heroku buildpacks:add -a rb-flask-01 heroku/python
 
 # Deploy each application
-$ git push https://git.heroku.com/rb-flask-00.git HEAD:master
-$ git push https://git.heroku.com/rb-flask-01.git HEAD:master
+$ git push heroku-example-00 HEAD:master
+$ git push heroku-example-01 HEAD:master
 
 # TROUBLESHOOTING: Tail the logs of your application on Heroku
 $ heroku logs --tail -a rb-flask-00
 $ heroku logs --tail -a rb-flask-01
 ```
+
+Assuming you have followed the steps above, you should be able to view:
+
+- [Example 00 - Heroku Application: `rb-flask-00` - Dice roll ](https://rb-flask-00.herokuapp.com)
+- [Example 01 - Heroku Application: `rb-flask-01` - Stocks app](https://rb-flask-01.herokuapp.com/stocks/AAPL)
