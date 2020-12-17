@@ -1,0 +1,16 @@
+{
+  "name": "explore-python-flask",
+  "version": "0.0.0",
+  "description": "This project explores creating applications using [Python 3.8.6 or newer](https://www.python.org) to develop [Flask](https://flask.palletsprojects.com/en/1.1.x/) applications.",
+  "keywords": [],
+  "author": "Rob Brennan <rob@therobbrennan.com> (therobbrennan.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRobBrennan/explore-python-flask.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRobBrennan/explore-python-flask/issues"
+  },
+  "homepage": "https://github.com/TheRobBrennan/explore-python-flask#readme"
+}
