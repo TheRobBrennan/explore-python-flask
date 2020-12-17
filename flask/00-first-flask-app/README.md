@@ -30,4 +30,6 @@ $ source env/bin/activate
 % gunicorn --bind 0.0.0.0:$PORT server:app --log-level "debug"
 ```
 
-Your Flask application will be available at [http://0.0.0.0:5001](http://0.0.0.0:5001)
+Assuming you have followed the steps above, you should be able to view:
+
+- Your Flask application at [http://0.0.0.0:5001](http://0.0.0.0:5001)
