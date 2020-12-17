@@ -41,7 +41,7 @@ Heroku applications assume one repo to one application. In this case, we are goi
 
 Imagine the nightmare of having individual repositories for all of the example apps we're creating 🤯 That would truly be a pain in the ass to manage and maintain, wouldn't it?
 
-We will use the [Heroku Multi Procfile buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-multi-procfile) to solve this problem.
+We will use [Heroku Multi Procfile buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-multi-procfile) and [Heroku buildpack for multiple requirements.txt files](https://github.com/klall/heroku-buildpack-multi-requirements.txt) to solve this problem.
 
 ```sh
 # Create more than one app on Heroku
@@ -56,7 +56,23 @@ $ heroku buildpacks:add -a rb-flask-01 heroku-community/multi-procfile
 $ heroku config:set -a rb-flask-00 PROCFILE=flask/00-first-flask-app/Procfile
 $ heroku config:set -a rb-flask-01 PROCFILE=flask/01-stock-app/Procfile
 
+# We're not done...yet. Each example app contains its own requirements.txt. Even with the buildpack installed (above), Heroku only
+# installs the requirements.txt file at the project root. We don't want that. Let's add another buildpack.
+
+# Add the Heroku buildpack for multiple requirements.txt files buildpack to each application
+#   NOTE: If you use third-party buildpacks like this, it is HIGHLY ENCOURAGED that you fork and have your own copy in case it all goes away.
+$ heroku buildpacks:add -a rb-flask-00 https://github.com/klall/heroku-buildpack-multi-requirements.txt
+$ heroku buildpacks:add -a rb-flask-01 https://github.com/klall/heroku-buildpack-multi-requirements.txt
+
+# Specify the location of each application's requirements.txt file in a REQUIREMENTS_TXT configuration setting
+$ heroku config:set -a rb-flask-00 REQUIREMENTS_TXT=flask/00-first-flask-app/requirements.txt
+$ heroku config:set -a rb-flask-01 REQUIREMENTS_TXT=flask/01-stock-app/requirements.txt
+
 # Deploy each application
 $ git push https://git.heroku.com/rb-flask-00.git HEAD:master
 $ git push https://git.heroku.com/rb-flask-01.git HEAD:master
+
+# TROUBLESHOOTING: Tail the logs of your application on Heroku
+$ heroku logs --tail -a rb-flask-00
+$ heroku logs --tail -a rb-flask-01
 ```
